@@ -72,10 +72,7 @@ def conceito_nota(nota:float):
         return 'F'
     
 #Exercicio 8
-def tipo_triangulo(a:int, b:int, c:int):
-    if (a+b>c) and (a+c>b) and (c+a>b):
-        if a==b==c:
-        return 'Equilátero'
+
 
 if __name__=='__main__':
     teste = fizz_buzz(85)
