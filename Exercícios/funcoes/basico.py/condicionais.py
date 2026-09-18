@@ -49,7 +49,33 @@ def maior_de_dois(a:int, b:int):
         return 'São iguais'
     
 #Exercicio 6
-
+def calcular_desconto(valor_compra:float, cliente_vip:bool):
+    if cliente_vip == True or valor_compra > 200:
+        valor_final_d = (valor_compra*(15/100))
+        desconto1 = valor_compra - valor_final_d
+        return f'Valor Final: {desconto1:.2f}'
+    
+    if cliente_vip == False or valor_compra < 200:
+        valor_final_sd = (valor_compra*(5/100))
+        desconto2 = valor_compra - valor_final_sd
+        return f'Valor Final: {desconto2:.2f}'
+    
+#Exercicio 7
+def conceito_nota(nota:float):
+    if nota >=9 or nota >=10:
+        return 'A'
+    if nota >=7 or nota >=8.9:
+        return 'B'
+    if nota >=5 or nota >=6.9:
+        return 'C'
+    if nota <5:
+        return 'F'
+    
+#Exercicio 8
+def tipo_triangulo(a:int, b:int, c:int):
+    if (a+b>c) and (a+c>b) and (c+a>b):
+        if a==b==c:
+        return 'Equilátero'
 
 if __name__=='__main__':
     teste = fizz_buzz(85)
@@ -64,4 +90,8 @@ if __name__=='__main__':
     print(f'4 - {resul}')
     Comp = maior_de_dois(5, 5)
     print(f'5 - {Comp}')
+    cdes = calcular_desconto(100.0, False)
+    print(f'6 - {cdes}')
+    nota = conceito_nota(4.2)
+    print(f'7 - {nota}')
     pass

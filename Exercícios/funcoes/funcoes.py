@@ -35,10 +35,15 @@ def metricas_cilindro(raio:float, altura:float):
     A_Base=(2*(3.14159*raio**2)+2*3.14159*raio*altura)
     return f'Volume do Cilindro: {V_cilin:.2f} | Área de Superfície: {A_Base:.2f}'
 
-#Exercício 8(Precisa Corrigir)
+#Exercício 8
 def gerar_item_fatura(nome_item:str, preco:float, porcentagem_desconto:float):
-    desconto = (preco-(porcentagem_desconto/100))
-    return f'{nome_item} | Preço Final: R$ {preco} (Você economizou R$ {desconto}) '
+    desconto = (preco*(porcentagem_desconto/100))
+    preco_final = preco - desconto
+    return f'{nome_item} | Preço Final: R$ {preco_final} (Você economizou R$ {desconto}) '
+
+#Exercicio 9 
+def resumo_emprestimo(capital:int, taxa_anual:float, anos:int):
+    capital
 
 if __name__=='__main__':
     
