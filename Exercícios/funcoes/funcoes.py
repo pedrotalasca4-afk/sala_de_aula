@@ -42,8 +42,21 @@ def gerar_item_fatura(nome_item:str, preco:float, porcentagem_desconto:float):
     return f'{nome_item} | Preço Final: R$ {preco_final} (Você economizou R$ {desconto}) '
 
 #Exercicio 9 
-def resumo_emprestimo(capital:int, taxa_anual:float, anos:int):
-    capital
+def resumo_emprestimo(capital:float, taxa_anual:float, anos:int):
+    r = taxa_anual / 12 / 100
+    n = anos * 12
+    Mensal = capital * (r * ((1+r) ** n)) / (((1 + r) ** n) - 1)
+    pag_total = Mensal * n
+
+    return f"Empréstimo: R$ {capital} Parcela Mensal: R$ {Mensal:.2f} | Total Pago: R$ {pag_total:.2f}"
+
+#Exercicio 10
+
+import math
+def calcular_distancia(x1:int, y1:int, x2:int, y2:int):
+    d = math.sqrt(((x2 - x1)**2 + (y2 - y1)**2))
+    return f'A distância entre ({x1},{y1}) e ({x2},{y2}) é de {d} unidades'
+
 
 if __name__=='__main__':
     
@@ -62,4 +75,8 @@ if __name__=='__main__':
     print(f'7 - {Cilindro}')
     Fatura = gerar_item_fatura("Item: Teclado", 80.0, 15.0)
     print(f'8 - {Fatura}')
+    emprestimo = resumo_emprestimo(10000, 6.0, 3)
+    print(f'9 - {emprestimo}')
+    distancia = calcular_distancia(1, 2 , 4, 6)
+    print(f'10 - {distancia}')
     print('\n\n=======================================')
