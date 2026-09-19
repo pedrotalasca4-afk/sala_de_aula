@@ -72,7 +72,16 @@ def conceito_nota(nota:float):
         return 'F'
     
 #Exercicio 8
-
+def tipo_triangulo(a:int, b:int, c:int):
+    if (a+b>c) and (b+c>a) and (c+a>b):
+        if a == b == c or a == c == b:
+            return 'Equilatero'
+        if a == b != c or b==c!=a:
+            return 'Isóceles'
+        if a != b != c or a != c != b:
+            return 'Escaleno'
+        else:
+            return 'Não é um triangulo'
 
 if __name__=='__main__':
     teste = fizz_buzz(85)
@@ -91,4 +100,6 @@ if __name__=='__main__':
     print(f'6 - {cdes}')
     nota = conceito_nota(4.2)
     print(f'7 - {nota}')
+    trian = tipo_triangulo(1, 2, 1)
+    print(f'8 - {trian}')
     pass
