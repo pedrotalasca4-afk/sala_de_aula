@@ -55,11 +55,8 @@ def contar_aprovados(notas:list):
 
 #Exercicio 7 (Escreva uma função filtrar_palavras_curtas(palavras, tamanho_maximo) que receba uma lista de strings e retorne apenas as palavras com comprimento menor ou igual ao tamanho_maximo.)
 def filtrar_palavras_curtas(palavras:list, tamanho_maximo:int):
-    curtas = []
-    for palavra in palavras:
-        if palavra >= tamanho_maximo:
-            curtas.append
-    return curtas
+    for 
+
 
 if __name__=='__main__':
     dobrar([1,2,3,4,5])
