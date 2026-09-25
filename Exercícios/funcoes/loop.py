@@ -55,8 +55,30 @@ def contar_aprovados(notas:list):
 
 #Exercicio 7 (Escreva uma função filtrar_palavras_curtas(palavras, tamanho_maximo) que receba uma lista de strings e retorne apenas as palavras com comprimento menor ou igual ao tamanho_maximo.)
 def filtrar_palavras_curtas(palavras:list, tamanho_maximo:int):
-    for 
+    menores = []
+    for palavra in palavras:
+        if len(palavra) <= tamanho_maximo:
+            menores.append(palavra)
+    return menores
 
+#Exercicio 8 (Escreva uma função separar_pares_impares(numeros) que receba uma lista de inteiros e retorne uma string no formato "Pares: X | Ímpares: Y", onde X é a quantidade de pares e Y a quantidade de ímpares.)
+def separar_pares_impares(numeros:list):
+    pares = []
+    impares = []
+    
+    for numero in numeros:
+        if numero % 2 == 0:
+            pares.append(numero)
+            len(pares)
+        if numero % 2 != 0:
+            impares.append(numero)
+            len(impares)
+
+    return f'Pares : {len(pares)} | Impares : {len(impares)}'
+
+#Exercicio 9 (Escreva uma função encontrar_extremos(numeros) que receba uma lista não vazia de números e retorne uma tupla (menor, maior) sem utilizar min() ou max().)
+def encontrar_extremos(numeros:list):
+    
 
 if __name__=='__main__':
     dobrar([1,2,3,4,5])
@@ -74,3 +96,7 @@ if __name__=='__main__':
     print(f'6 - {aprovados}')
     p_curtas = filtrar_palavras_curtas(["sol", "computador", "python", "mar"], 6)
     print(f'7 - {p_curtas}')
+    separar = separar_pares_impares([1, 2, 3, 4, 5])
+    print(f'8 - {separar}')
+    extremo = encontrar_extremos([14, 2, 35, -4, 20])
+    print(f'9 - {extremo}')
