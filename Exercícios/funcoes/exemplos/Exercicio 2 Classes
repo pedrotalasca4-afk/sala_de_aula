@@ -1,0 +1,14 @@
+#Objetivo: Criar uma classe com um método que utiliza os atributos do próprio objeto.Requisito: A classe deve armazenar nome e cidade. Crie um método apresentar() que retorne uma string formatada.
+#Estrutura Sugerida:Atributos: nome, cidade.Método: apresentar() -> Retorna "Olá, meu nome é {nome} e moro em {cidade}.".
+
+class Pessoa:
+    def __init__(self, nome:str, cidade:str):
+        self.nome = nome
+        self.cidade = cidade
+    
+    def apresentar(self):
+        print(f'Olá, meu nome é {self.nome} e moro em {self.cidade}')
+
+uma_pessoa = Pessoa('Pedro', 'Porto Alegre')
+
+uma_pessoa.apresentar()

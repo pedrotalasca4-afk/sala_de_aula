@@ -77,8 +77,16 @@ def separar_pares_impares(numeros:list):
     return f'Pares : {len(pares)} | Impares : {len(impares)}'
 
 #Exercicio 9 (Escreva uma função encontrar_extremos(numeros) que receba uma lista não vazia de números e retorne uma tupla (menor, maior) sem utilizar min() ou max().)
-def encontrar_extremos(numeros:list):
-    
+def encontrar_extremos(numeros):
+    maior = numeros[0]
+    menor = numeros[0]
+
+    for numero in numeros:
+        if numero > maior:
+            maior = numero
+        if numero < menor:
+            menor = numero
+    return f'({menor},{maior})'
 
 if __name__=='__main__':
     dobrar([1,2,3,4,5])

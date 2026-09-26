@@ -1,0 +1,15 @@
+#Exercicio 1 (Objetivo: Criar uma classe simples com atributos básicos e um método de ação.Requisito: A classe deve armazenar nome, raca e idade. 
+# Crie um método latir() que imprima uma mensagem na tela.
+# Estrutura Sugerida:Atributos: nome, raca, idade.)
+class Cachorro:
+    def __init__(self, nome: str, raca: str, idade: int):
+        self.nome = nome
+        self.raca = raca
+        self.idade = idade
+
+    def latir(self):
+        print(f"Au au!{self.nome} está latindo.")
+
+meu_cachorro = Cachorro("Pera", "Pitbull", 3)
+
+meu_cachorro.latir()

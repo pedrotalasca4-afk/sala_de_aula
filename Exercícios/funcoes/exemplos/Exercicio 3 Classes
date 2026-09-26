@@ -1,0 +1,18 @@
+#Objetivo: Modificar o estado do objeto através de um método com parâmetro.
+# Requisito: A classe armazena nome e preco. Crie um método aplicar_desconto(percentual) que subtraia o valor correspondente do preço original.
+# Estrutura Sugerida:
+# Atributos: nome, preco.
+# Método: aplicar_desconto(percentual) -> self.preco -= self.preco * (percentual / 100).
+class Compra:
+    def __init__(self, nome:str, preco:int, desconto:int):
+        self.nome = nome
+        self.preco = preco
+        self.desconto = desconto
+
+    def aplicar_desconto(self):
+        self.preco -= self.preco * (self.desconto / 100)
+        print(f'Sua Compra foi um {self.nome}, como você tem um desconto de {self.desconto}%, agora custa {self.preco} ')
+
+uma_compra = Compra('Tablet', 70, 10)
+
+uma_compra.aplicar_desconto()
