@@ -1,0 +1,19 @@
+#Exercicio 5 (Objetivo: Controlar a soma de um valor numérico.
+# Requisito: Armazene titular e saldo (inicializando sempre em 0 se não for passado). Crie um método depositar(valor).
+# Estrutura Sugerida:
+# Atributos: titular, saldo (padrão = 0).
+# Método: depositar(valor) -> Adiciona o valor ao saldo.)
+class ContaBancaria:
+    def __init__(self, titular:int, saldo:int):
+        self.titular = titular
+        self.saldo = saldo if 0 == saldo else saldo
+
+
+    def depositar(self):
+        valor_total = self.titular + self.saldo
+        print(valor_total)
+
+Banco = ContaBancaria(100, 0)
+
+Banco.depositar()
+

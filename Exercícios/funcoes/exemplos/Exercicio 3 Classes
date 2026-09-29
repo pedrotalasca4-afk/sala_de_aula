@@ -1,3 +1,4 @@
+#Exercício 3
 #Objetivo: Modificar o estado do objeto através de um método com parâmetro.
 # Requisito: A classe armazena nome e preco. Crie um método aplicar_desconto(percentual) que subtraia o valor correspondente do preço original.
 # Estrutura Sugerida:

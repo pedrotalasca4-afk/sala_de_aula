@@ -1,8 +1,23 @@
-#Objetivo: Criar uma classe focada em cálculos matemáticos usando atributos.
+#Exercicío 4
+# Objetivo: Criar uma classe focada em cálculos matemáticos usando atributos.
 # Requisito: Armazene base e altura. Crie métodos para calcular a área e o perímetro.
 # Estrutura Sugerida:
 # Atributos: base, altura.
 # Métodos: calcular_area() -> Retorna base * altura. calcular_perimetro() -> Retorna 2 * (base + altura).
-class Calculos:
+class Pitagoras:
     def __init__(self, base:int, altura:int):
-        
+        self.base = base
+        self.altura = altura
+
+    def calcular_area(self):
+        area = self.base * self.altura
+        print(area)
+
+    def calcular_perimetro(self):
+        perimetro = 2 * (self.base + self.altura)
+        print(perimetro)
+
+Area = Pitagoras(2, 3)
+
+Area.calcular_area()
+Area.calcular_perimetro()
