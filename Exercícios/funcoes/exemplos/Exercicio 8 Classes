@@ -1,0 +1,26 @@
+#Exercício 8: Classe "Elevador"(Precisa Corrigir)
+#Objetivo: Validar limites antes de alterar o estado.
+#Requisito: Armazene andar_atual e total_andares. Crie métodos subir() e descer(). O elevador não pode descer abaixo do térreo (0) nem subir acima do total de andares.
+#Estrutura Sugerida:
+#Atributos: andar_atual (0), total_andares.
+#Métodos: subir(), descer() com if para garantir limites físicos.
+class Elevador:
+    def __init__(self, andar_atual:int , total_andares:int):
+        self.andar = andar_atual
+        self.andares = total_andares
+    
+    def subir(self):
+        self.andar += 1
+        print(self.andar)
+        if self.andar > self.andares:
+            return 'Andar não Encontrado'
+
+    def descer(self):
+        self.andares -= 1
+        print(self.andar)
+        if self.andar < self.andares:
+            return 'Andar não Encontrado'
+
+
+elevador = Elevador()
+elevador.descer()

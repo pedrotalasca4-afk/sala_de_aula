@@ -1,0 +1,26 @@
+#Exercício 6 (Corrija com o professor)
+#Classe "Carro"
+#Objetivo: Gerenciar um estado booleano simples.
+#Requisito: Armazene marca, modelo e ligado (bool). Crie métodos ligar() e desligar() que alterem esse estado.
+#Estrutura Sugerida:
+#Atributos: marca, modelo, ligado (padrão = False).
+#Métodos: ligar() -> Define ligado = True. desligar() -> Define ligado = False.
+class Carro:
+    def __init__(self, marca:str, modelo:int, ligado:bool = False):
+        self.marca = marca
+        self.marca = modelo
+        self.ligado = False
+
+
+    def ligar(self):
+        self.ligado = True
+        print(self.ligado)
+
+
+    def desligar(self):
+        self.ligado = False
+        print(self.ligado)
+
+
+carro = Carro
+carro.desligar(Carro)

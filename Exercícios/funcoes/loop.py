@@ -3,14 +3,16 @@ def dobrar(numeros:list):
         numero = numero * 2
         print(numero)
 
+
 #Exercicio 1
 def filtrar_pares(numeros:list):
     pares = []
     for numero in numeros:
         if numero % 2 == 0:
             pares.append(numero)
-        
+       
     return pares
+
 
 #Exercicio 2
 def contar_negativos(numeros: list):
@@ -20,6 +22,7 @@ def contar_negativos(numeros: list):
             count+=1
     return count
 
+
 #Exercicios 3 (Escreva uma função somar_maiores_que(numeros, limite) que receba uma lista de números e um valor de limite, retornando a soma apenas dos valores superiores ao limite.)
 def somar_maiores_que(numeros:list, limite:int):
     maior = 0
@@ -28,6 +31,7 @@ def somar_maiores_que(numeros:list, limite:int):
             maior+=numero
     return maior
 
+
 #Exercicio 4 (Escreva uma função zerar_negativos(numeros) que receba uma lista de inteiros e retorne uma nova lista onde todo número negativo é substituído por 0.)
 def zerar_negativos(numeros:list):
     novo_negativo = numeros.copy()
@@ -35,8 +39,9 @@ def zerar_negativos(numeros:list):
         if numero< 0 :
             indice = numeros.index(numero)
             novo_negativo[indice] = 0
-            
+           
     return novo_negativo
+
 
 #Exercicio 5 (Escreva uma função contem_valor(lista, alvo) usando um laço while para verificar se o valor alvo está presente na lista. Retorne True ou False.)
 def contem_valor(lista:list, alvo:str):
@@ -44,7 +49,7 @@ def contem_valor(lista:list, alvo:str):
         return 'True'
     else:
         return 'False'
-    
+   
 #Exercicio 6 (Escreva uma função contar_aprovados(notas) que receba uma lista de notas e retorne quantos alunos obtiveram nota maior ou igual a 7.0.)
 def contar_aprovados(notas:list):
     aprovados = 0
@@ -52,6 +57,7 @@ def contar_aprovados(notas:list):
         if nota >= 7.0:
             aprovados += 1
     return aprovados
+
 
 #Exercicio 7 (Escreva uma função filtrar_palavras_curtas(palavras, tamanho_maximo) que receba uma lista de strings e retorne apenas as palavras com comprimento menor ou igual ao tamanho_maximo.)
 def filtrar_palavras_curtas(palavras:list, tamanho_maximo:int):
@@ -61,11 +67,12 @@ def filtrar_palavras_curtas(palavras:list, tamanho_maximo:int):
             menores.append(palavra)
     return menores
 
+
 #Exercicio 8 (Escreva uma função separar_pares_impares(numeros) que receba uma lista de inteiros e retorne uma string no formato "Pares: X | Ímpares: Y", onde X é a quantidade de pares e Y a quantidade de ímpares.)
 def separar_pares_impares(numeros:list):
     pares = []
     impares = []
-    
+   
     for numero in numeros:
         if numero % 2 == 0:
             pares.append(numero)
@@ -74,12 +81,15 @@ def separar_pares_impares(numeros:list):
             impares.append(numero)
             len(impares)
 
+
     return f'Pares : {len(pares)} | Impares : {len(impares)}'
+
 
 #Exercicio 9 (Escreva uma função encontrar_extremos(numeros) que receba uma lista não vazia de números e retorne uma tupla (menor, maior) sem utilizar min() ou max().)
 def encontrar_extremos(numeros):
     maior = numeros[0]
     menor = numeros[0]
+
 
     for numero in numeros:
         if numero > maior:
@@ -87,6 +97,45 @@ def encontrar_extremos(numeros):
         if numero < menor:
             menor = numero
     return f'({menor},{maior})'
+
+
+#Exercício 10: Processamento de Caixa Eletrônico com while
+#Objetivo: Escreva uma função simular_saque(saldo_inicial, saques) que receba o saldo da conta e uma lista de saques desejados. Processa cada saque sequencialmente usando while. Se o saldo for suficiente, desconta o valor; se não for, ignora o saque. Retorne o saldo restante.
+#Exemplo de Chamada: simular_saque(200, [50, 100, 80, 30])
+#Retorno Esperado: 20 (Subtrai 50, 100 e 30; ignora o 80 por saldo insuficiente)
+def simular_saque(saldo_inicial:int, saques:list):
+    for saque in saques:
+        while saldo_inicial > saque:
+            saldo_inicial -= saque
+    return saldo_inicial
+
+
+#Exercício 11: Remover Duplicados Mantedor de Ordem
+#Objetivo: Escreva uma função remover_duplicados(lista) que receba uma lista e retorne uma nova lista apenas com a primeira ocorrência de cada elemento, preservando a ordem original.
+#Exemplo de Chamada: remover_duplicados([1, 3, 2, 3, 1, 4, 2])
+#Retorno Esperado: [1, 3, 2, 4]
+def remover_duplicados(lista:list):
+    nao_d = []
+    for numero in lista:
+        if numero not in nao_d:
+            nao_d.append(numero)
+    return nao_d
+
+
+#Exercício 12: Média dos Positivos(Precisa Corrigir)
+# Objetivo: Escreva uma função media_positivos(numeros) que calcule a média aritmética apenas dos números estritamente positivos. Se não houver números positivos, retorne 0.0.
+# Exemplo de Chamada: media_positivos([-5, 10, -2, 20, 30])
+# Retorno Esperado: 20.0 (10 + 20 + 30) / 3
+def media_positivos(numeros:list):
+    positivos = []
+    for numero in numeros:
+        if numero > 0:
+            positivos.append(numero)
+            total = sum(positivos) / len(positivos)
+            return total
+        else:
+            return 0.0
+
 
 if __name__=='__main__':
     dobrar([1,2,3,4,5])
@@ -108,3 +157,9 @@ if __name__=='__main__':
     print(f'8 - {separar}')
     extremo = encontrar_extremos([14, 2, 35, -4, 20])
     print(f'9 - {extremo}')
+    saque = simular_saque(200,[50, 100, 80, 30])
+    print(f'10 - {saque}')
+    duplicado = remover_duplicados([1,3,2,3,1,4,2])
+    print(f'11 - {duplicado}')
+    positivos = media_positivos([-5, 10, -2, 20, 30])
+    print(f'12 - {positivos}')

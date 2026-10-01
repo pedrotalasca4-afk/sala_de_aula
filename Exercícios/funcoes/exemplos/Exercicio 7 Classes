@@ -1,0 +1,20 @@
+#Exercício 7:
+# Classe "Livro"
+#Objetivo: Manipular a leitura de atributos.
+#Requisito: Armazene titulo, autor e numero_paginas. Crie um método exibir_resumo() que retorne uma string com todos esses dados.
+#Estrutura Sugerida:
+#Atributos: titulo, autor, numero_paginas.
+#Método: exibir_resumo() -> Retorna "O livro {titulo} foi escrito por {autor} e possui {numero_paginas} páginas.".
+class Livro:
+    def __init__(self, titulo:str, autor:str, numero_paginas:int):
+        self.titulo = titulo
+        self.autor = autor
+        self.paginas = numero_paginas
+
+
+    def resumo(self):
+        print(f' "O livro {self.titulo} foi escrito por {self.autor} e possui {self.paginas} páginas.')
+
+
+livro = Livro('Chocolate com Pimenta', 'Alguém', 345)
+livro.resumo()
