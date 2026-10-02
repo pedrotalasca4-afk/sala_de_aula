@@ -104,6 +104,77 @@ def e_bissexto(ano:int):
     else:
         return 'False'
 
+#Exercício 11:
+# Objetivo: Escreva uma função avaliar_estudante(p1, p2, frequencia, entregou_trabalho_extra).
+# Cálculo da Média: media = (p1 + p2) / 2
+# Regras de Avaliação:
+#       Se frequencia < 75: Retorne "Reprovado por Frequência".
+#       Se frequencia >= 75:
+            # Se media >= 7.0: Retorne "Aprovado Direto".
+            # Se media estiver entre 5.0 e 6.9: Se entregou_trabalho_extra == True, adicione  +1.0 ponto à média. Se a nova média for >= 7.0, retorne "Aprovado com Trabalho Extra"; caso contrário, retorne "Exame Final".
+            # Se media < 5.0: Retorne "Reprovado por Nota".
+# Exemplos:
+    # avaliar_estudante(6.0, 6.5, 80, True) → "Aprovado com Trabalho Extra"
+    # avaliar_estudante(8.0, 9.0, 70, False) → "Reprovado por Frequência"
+def avaliar_estudante(p1:float, p2: float, frequencia:int, entregou_trabalho_extra:bool):
+    media = (p1 + p2) / 2
+    if frequencia < 75:
+        return 'Reprovado por Frequência'
+    if frequencia >= 75:
+        if media >= 7.0:
+            return 'Aprovado Direto'
+        if media > 5.0 and media < 6.9:
+            if entregou_trabalho_extra == True:
+                media += 1.0
+                if media >= 7.0:
+                    return 'Aprovado com Trabalho Extra'
+                else:
+                    return 'Exame Final'
+        if media < 5.0:
+            return 'Reprovado por Nota'
+
+#Exercicio 12
+#Objetivo: Escreva uma função localizar_ponto(x, y) que determine a posição exata de um ponto no plano cartesiano 2D sem usar laços ou vetores.
+#Regras:
+    #x == 0 e y == 0 → "Origem"
+    #x == 0 e y != 0 → "Eixo Y"
+    #x != 0 e y == 0 → "Eixo X"
+    #x > 0 e y > 0 → "Q1"
+    #x < 0 e y > 0 → "Q2"
+    #x < 0 e y < 0 → "Q3"
+    #x > 0 e y < 0 → "Q4"
+#Exemplos:
+    #localizar_ponto(0, -5) → "Eixo Y"
+    #localizar_ponto(-3, -4) → "Q3"
+def localizar_ponto(x:int,y:int):
+     if x== 0 and y == 0:
+         return 'Origem'
+     if x == 0 and y != 0:
+         return 'Eixo Y'
+     if x != 0 and y == 0:
+         return 'Eixo X'
+     if x > 0 and y > 0:
+         return 'Q1'
+     if x < 0 and y > 0:
+         return 'Q2'
+     if x < 0 and y < 0:
+         return 'Q3'
+     if x > 0 and y < 0:
+         return 'Q4'
+     
+# Exercício 13: Simulador de Tarifação Telefônica em Rolo
+# Objetivo: Escreva uma função calcular_fatura_telefone(minutos, gigas, e_estudante).
+# Regras de Cobrança:
+    # Plano Base: R$ 50.00 (inclui até 100 minutos e até 5 GB).
+    # Minutos excedentes (acima de 100 min): R$ 0.50 por minuto adicional.
+    # Dados excedentes (acima de 5 GB): R$ 10.00 por GB adicional.
+    # Regra de Desconto: Se e_estudante == True E o valor total da fatura (com excedentes) for estritamente superior a R$ 100.00, aplique um desconto de R$ 20.00.
+# Retorno: Retorne uma f-string formatada (ex: "Fatura Final: R$ X.XX").
+# Exemplos:
+    # calcular_fatura_telefone(120, 7, True) → "Fatura Final: R$ 60.00" (Cálculo: R$ 50 + 200.50 + 210 = R$ 80; como não passou de R$ 100, não aplica o desconto)
+    # calcular_fatura_telefone(200, 10, True) → "Fatura Final: R$ 130.00" (Cálculo: R$ 50 + 1000.50 + 510 = R$ 150 - R$ 20 = R$ 130)
+def calcular_fatura_telefone(minutos: int, gigas:int, e_estudante:bool):
+
 
 if __name__=='__main__':
     teste = fizz_buzz(85)
@@ -128,4 +199,8 @@ if __name__=='__main__':
     print(f'9 - {imp}')
     bissexto = e_bissexto(1900)
     print(f'10 - {bissexto}')
+    estudante = avaliar_estudante(8.0, 9.0, 70, False)
+    print(f'11 - {estudante}')
+    ponto = localizar_ponto(-3, -4)
+    print(f'12 - {ponto}')
     pass
