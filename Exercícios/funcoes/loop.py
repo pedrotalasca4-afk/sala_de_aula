@@ -122,7 +122,7 @@ def remover_duplicados(lista:list):
     return nao_d
 
 
-#Exercício 12: Média dos Positivos(Precisa Corrigir)
+#Exercício 12: Média dos Positivos
 # Objetivo: Escreva uma função media_positivos(numeros) que calcule a média aritmética apenas dos números estritamente positivos. Se não houver números positivos, retorne 0.0.
 # Exemplo de Chamada: media_positivos([-5, 10, -2, 20, 30])
 # Retorno Esperado: 20.0 (10 + 20 + 30) / 3
@@ -132,10 +132,44 @@ def media_positivos(numeros:list):
         if numero > 0:
             positivos.append(numero)
             total = sum(positivos) / len(positivos)
-            return total
-        else:
-            return 0.0
+    return total
 
+
+#Exercício 13: Validador de Senhas em Lista
+# Objetivo: Escreva uma função validar_senhas(lista_senhas) que receba uma lista de strings e retorne apenas as senhas que possuem pelo menos 8 caracteres.
+# Exemplo de Chamada: validar_senhas(["12345", "senha1234", "admin", "python2026"])
+# Retorno Esperado: ["senha1234", "python2026"]
+def validar_senhas(lista_senhas:list) -> str:
+    senhas_8 = []
+    for senha in lista_senhas:
+        if len(senha) >= 8:
+            senhas_8.append(senha)
+    return senhas_8
+
+
+#Exercício 14: Busca do Primeiro Elemento Fora do Padrão (while)
+#Objetivo: Escreva uma função primeiro_impar(numeros) que percorra uma lista usando while e retorne o primeiro número ímpar encontrado. Se não encontrar nenhum, retorne None.
+#Exemplo de Chamada: primeiro_impar([2, 4, 6, 9, 10, 11])
+#Retorno Esperado: 9
+def primeiro_impar(numeros:list) -> int:
+    indice = 0
+    while indice < len(numeros):
+        if numeros[indice] % 2 != 0:
+            return numeros[indice]
+        indice += 1
+    return None
+
+
+#Exercício 15: Contagem de Frequência de um Elemento
+#Objetivo: Escreva uma função contar_ocorrencias(lista, elemento_alvo) que conte quantas vezes elemento_alvo aparece na lista sem utilizar a função .count().
+#Exemplo de Chamada: contar_ocorrencias(["a", "b", "a", "c", "a"], "a")
+#Retorno Esperado: 3
+def contar_ocorrencias(lista:list, elemento_alvo:str):
+    letrinhas = 0
+    for letra in lista:
+        if letra == elemento_alvo:
+            letrinhas += 1
+    return letrinhas
 
 if __name__=='__main__':
     dobrar([1,2,3,4,5])
@@ -163,3 +197,9 @@ if __name__=='__main__':
     print(f'11 - {duplicado}')
     positivos = media_positivos([-5, 10, -2, 20, 30])
     print(f'12 - {positivos}')
+    senhas = validar_senhas(["12345", "senha1234", "admin", "python2026"])
+    print(f'13 - {senhas}')
+    pega_impar = primeiro_impar([2, 4, 6, 9, 10, 11])
+    print(f'14 - {pega_impar}')
+    ocorrencias = contar_ocorrencias(["a", "b", "a", "c", "a"],'a')
+    print(f'15 - {ocorrencias}')

@@ -1,0 +1,29 @@
+#Exercício 9: Classe "Tamagotchi" (Bichinho Virtual)
+#Objetivo: Interação entre múltiplos atributos.
+#Requisito: Armazene nome, fome (0 a 100) e energia (0 a 100). Crie métodos comer() (diminui fome, aumenta energia) e brincar() (aumenta fome, diminui energia). Garanta que os valores fiquem entre 0 e 100.
+#Estrutura Sugerida:
+#Atributos: nome, fome, energia.
+#Métodos: comer(), brincar(). Uso de min() e max() ou if para limitar a 100 e 0.
+class Tamagotchi:
+    def __init__(self, nome:str, fome:list, energia:list):
+        self.nome = nome
+        self.fome = fome
+        self.energia = energia
+
+    def comer(self):
+        for barra_fome in self.fome:
+            if barra_fome >= 10 or barra_fome <=100:
+                self.fome - 10
+                self.energia+ 10
+                print(f'{self.fome}, {self.energia}')
+
+    def brincar(self):
+        for barra_energia in self.energia:
+            if barra_energia >= 10 or barra_energia <=100:
+                self.fome + 10
+                self.energia - 10
+                print(f'{self.fome}, {self.energia}')
+
+tamagotchi = Tamagotchi('Carlos', list(range(1,101)), list(range(1,101)))
+tamagotchi.comer()
+tamagotchi.brincar()
