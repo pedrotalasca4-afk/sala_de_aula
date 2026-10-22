@@ -17,13 +17,6 @@ class Tamagotchi:
                 self.energia+ 10
                 print(f'{self.fome}, {self.energia}')
 
-    def brincar(self):
-        for barra_energia in self.energia:
-            if barra_energia >= 10 or barra_energia <=100:
-                self.fome + 10
-                self.energia - 10
-                print(f'{self.fome}, {self.energia}')
 
 tamagotchi = Tamagotchi('Carlos', list(range(1,101)), list(range(1,101)))
 tamagotchi.comer()
-tamagotchi.brincar()

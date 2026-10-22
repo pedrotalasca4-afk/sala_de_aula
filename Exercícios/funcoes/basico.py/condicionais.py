@@ -173,7 +173,7 @@ def localizar_ponto(x:int,y:int):
 # Exemplos:
     # calcular_fatura_telefone(120, 7, True) → "Fatura Final: R$ 60.00" (Cálculo: R$ 50 + 200.50 + 210 = R$ 80; como não passou de R$ 100, não aplica o desconto)
     # calcular_fatura_telefone(200, 10, True) → "Fatura Final: R$ 130.00" (Cálculo: R$ 50 + 1000.50 + 510 = R$ 150 - R$ 20 = R$ 130)
-def calcular_fatura_telefone(minutos: int, gigas:int, e_estudante:bool):
+
 
 
 if __name__=='__main__':
