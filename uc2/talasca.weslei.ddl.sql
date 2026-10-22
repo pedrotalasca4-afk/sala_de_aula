@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS cliente_telefone (
     numero INTEGER NOT NULL
 );
 ALTER TABLE cliente_telefone
-    ADD COLUMN id_cliente INTEGER,
+    ADD COLUMN IF NOT EXISTS id_cliente INTEGER,
     ADD CONSTRAINT fk_id_cliente
         FOREIGN KEY(id_cliente)
         REFERENCES cliente(id_cliente);
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS doce (
 );
 
 ALTER TABLE doce
-    ADD COLUMN id_tipo INTEGER,
+    ADD COLUMN IF NOT EXISTS id_tipo INTEGER,
     ADD CONSTRAINT fk_id_tipo
         FOREIGN KEY(id_tipo)
         REFERENCES tipo_doce(id_tipo);
@@ -47,13 +47,13 @@ CREATE TABLE IF NOT EXISTS item_pedido (
 );
 
 ALTER TABLE item_pedido
-    ADD COLUMN id_pedido INTEGER,
+    ADD COLUMN IF NOT EXISTS id_pedido INTEGER,
     ADD CONSTRAINT fk_id_pedido
         FOREIGN KEY(id_pedido)
         REFERENCES pedido(id_pedido);
 
 ALTER TABLE item_pedido
-    ADD COLUMN id_doce INTEGER,
+    ADD COLUMN IF NOT EXISTS id_doce INTEGER,
     ADD CONSTRAINT fk_id_doce
         FOREIGN KEY(id_doce)
         REFERENCES doce(id_doce);
@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS solicitacao (
 
 );
 ALTER TABLE solicitacao
-    ADD COLUMN id_cliente INTEGER,
-    ADD COLUMN id_pedido INTEGER;
+    ADD COLUMN IF NOT EXISTS id_cliente INTEGER,
+    ADD COLUMN IF NOT EXISTS id_pedido INTEGER;
 
 ALTER TABLE solicitacao
     ADD CONSTRAINT fk_id_cliente
