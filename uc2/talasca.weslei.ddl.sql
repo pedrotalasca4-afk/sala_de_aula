@@ -43,9 +43,11 @@ ALTER TABLE doce
 
 CREATE TABLE IF NOT EXISTS tipo_doce (
     id_tipo SERIAL PRIMARY KEY,
-    sabor VARCHAR(20) NOT NULL
+    sabor VARCHAR(30) NOT NULL,
 );
 
+ALTER TABLE tipo_doce
+    ADD COLUMN IF NOT EXISTS tipo VARCHAR(20);
 
 CREATE TABLE IF NOT EXISTS item_pedido (
     total_pago NUMERIC(10,2) NOT NULL,
@@ -66,6 +68,11 @@ ALTER TABLE item_pedido
         FOREIGN KEY(id_doce)
         REFERENCES doce(id_doce);
 
+ALTER TABLE item_pedido
+    ADD COLUMN IF NOT EXISTS id_cliente INTEGER,
+    ADD CONSTRAINT fk_id_cliente
+        FOREIGN KEY(id_cliente)
+        REFERENCES cliente(id_cliente);
 
 CREATE TABLE IF NOT EXISTS solicitacao (
 
