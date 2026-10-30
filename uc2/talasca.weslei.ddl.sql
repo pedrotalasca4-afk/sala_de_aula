@@ -74,6 +74,9 @@ ALTER TABLE item_pedido
         FOREIGN KEY(id_cliente)
         REFERENCES cliente(id_cliente);
 
+ALTER TABLE item_pedido
+    ADD CONSTRAINT pk_item_pedido PRIMARY KEY (id_pedido, id_doce, id_cliente);
+
 CREATE TABLE IF NOT EXISTS solicitacao (
 
 
