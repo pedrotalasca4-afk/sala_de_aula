@@ -15,7 +15,7 @@ MULTA_POR_DIA = 5.00
 
 def multa(dias_atraso):
     """Multa pela devolução atrasada, em reais."""
-    if dias_atraso >= 3:
+    if dias_atraso > 3:
         return dias_atraso * MULTA_POR_DIA
     return 0.0
 
