@@ -43,7 +43,7 @@ ALTER TABLE doce
 
 CREATE TABLE IF NOT EXISTS tipo_doce (
     id_tipo SERIAL PRIMARY KEY,
-    sabor VARCHAR(30) NOT NULL,
+    sabor VARCHAR(30) NOT NULL
 );
 
 ALTER TABLE tipo_doce
