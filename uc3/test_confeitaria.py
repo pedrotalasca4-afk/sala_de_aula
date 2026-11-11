@@ -12,3 +12,7 @@ def test_produto_entregue_recebe_bonus():
 
 def test_produto_entregue_antes_do_prazo_nao_recebe_bonus():
     assert calcular_preco_com_bonus(200.0, False) == 200.0
+
+def test_recusa_preco_negativo():
+    with pytest.raises(ValueError):
+        calcular_preco_com_bonus(-50.0,True)
