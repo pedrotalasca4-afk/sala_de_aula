@@ -1,1 +1,4 @@
 aviso.txt
+config_local.py
+__pycache__/
+.pytest_cache/
