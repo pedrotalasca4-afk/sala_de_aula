@@ -15,6 +15,5 @@ def test_alugou_por_dias_valido():
     assert valor_do_aluguel(10.0,1) == 10.0
 
 def test_valor_por_dia_negativo_ou_zero_dias():
-    if not valor_do_aluguel:
-        with pytest.raises(ValueError):
-            valor_do_aluguel(5.0,0)
+    with pytest.raises(ValueError):
+        valor_do_aluguel(5.0,0)
