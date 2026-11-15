@@ -20,6 +20,6 @@ class ProcessadorDePedidos:
             if pedido.data_entregue is None and hoje > pedido.data_prevista:
                 self.enviador_email.enviar(
                     pedido.cliente_email, 
-                    f"seu pedido #{pedido.id_pedido} esta atrasado"
+                    f" seu pedido #{pedido.id_pedido} esta atrasado"
                 )
                 self.total_notificados += 1
