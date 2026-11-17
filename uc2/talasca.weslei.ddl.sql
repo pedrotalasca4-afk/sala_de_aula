@@ -33,7 +33,10 @@ CREATE TABLE IF NOT EXISTS doce (
     preco NUMERIC(10,2) NOT NULL
 );
 
-
+CREATE TABLE IF NOT EXISTS tipo_doce (
+    id_tipo SERIAL PRIMARY KEY,
+    sabor VARCHAR(30) NOT NULL
+);
 ALTER TABLE doce
     ADD COLUMN IF NOT EXISTS id_tipo INTEGER,
     ADD CONSTRAINT fk_id_tipo
@@ -41,10 +44,7 @@ ALTER TABLE doce
         REFERENCES tipo_doce(id_tipo);
 
 
-CREATE TABLE IF NOT EXISTS tipo_doce (
-    id_tipo SERIAL PRIMARY KEY,
-    sabor VARCHAR(30) NOT NULL
-);
+
 
 ALTER TABLE tipo_doce
     ADD COLUMN IF NOT EXISTS tipo VARCHAR(20);
