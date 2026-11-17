@@ -4,20 +4,23 @@ from unittest.mock import Mock
 from datetime import date
 from confeitaria import ProcessadorDePedidos
 
+# --- TESTES DA FUNÇÃO DE BÔNUS (2% NA DATA PREVISTA) ---
 
-def test_produto_entregue_mesmo_dia_recebe_bonus():
-    assert calcular_preco_com_bonus(100.0, True) == 110.0
+def test_produto_entregue_com_bonus_recebe_dois_por_cento():
+    assert calcular_preco_com_bonus(100.0, True) == 102.0
 
 def test_produto_valor_zero_com_bonus():
     assert calcular_preco_com_bonus(0.0, True) == 0.0
 
-def test_produto_sem_mesma_data_nao_recebe_bonus():
+def test_produto_sem_entrega_na_data_nao_recebe_bonus():
     assert calcular_preco_com_bonus(200.0, False) == 200.0
 
 def test_recusa_preco_negativo_no_bonus():
     with pytest.raises(ValueError):
         calcular_preco_com_bonus(-50.0, True)
 
+
+# --- TESTES DA FUNÇÃO DE DESCONTO POR ATRASO (0,5% POR DIA) ---
 
 def test_desconto_atraso_zero_dias():
     assert calcular_preco_com_desconto_atraso(200.0, 0) == 200.0
@@ -33,6 +36,7 @@ def test_recusa_dias_atraso_negativos():
         calcular_preco_com_desconto_atraso(200.0, -1)
 
 
+# --- TESTES DO PROCESSADOR DE PEDIDOS (MOCKS) ---
 
 class PedidoFalso:
     def __init__(self, id_pedido, cliente_email, data_prevista, data_entregue=None):
