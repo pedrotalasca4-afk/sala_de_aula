@@ -1,5 +1,5 @@
 from relatorio import Aluguel, total_do_cliente
-from confeitaria import calcular_preco_com_bonus
+from confeitaria import calcular_preco_com_status_entrega
 
 
 def test_cliente_sem_alugueis():

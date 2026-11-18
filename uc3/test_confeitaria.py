@@ -1,23 +1,34 @@
-import pytest
-from confeitaria import calcular_preco_com_bonus, calcular_preco_com_desconto_atraso
-from unittest.mock import Mock
 from datetime import date
-from confeitaria import ProcessadorDePedidos
+from unittest.mock import Mock
+import pytest
+from confeitaria import (
+    calcular_preco_com_status_entrega,
+    calcular_preco_com_desconto_atraso,
+    Pedido,
+    RepositorioDePedidos,
+    EnviadorDeEmail,
+    RelogioDoSistema,
+    ProcessadorDePedidos,
+)
 
-# --- TESTES DA FUNÇÃO DE BÔNUS (2% NA DATA PREVISTA) ---
 
-def test_produto_entregue_com_bonus_recebe_dois_por_cento():
-    assert calcular_preco_com_bonus(100.0, True) == 102.0
+# --- TESTES DA FUNÇÃO DE BÔNUS (TRÊS ESTADOS DE ENTREGA) ---
+
+def test_produto_entregue_no_dia_recebe_dois_por_cento():
+    assert calcular_preco_com_status_entrega(100.0, 'no_dia') == 102.0
 
 def test_produto_valor_zero_com_bonus():
-    assert calcular_preco_com_bonus(0.0, True) == 0.0
+    assert calcular_preco_com_status_entrega(0.0, 'no_dia') == 0.0
 
-def test_produto_sem_entrega_na_data_nao_recebe_bonus():
-    assert calcular_preco_com_bonus(200.0, False) == 200.0
+def test_produto_entregue_antes_do_prazo_nao_recebe_bonus():
+    assert calcular_preco_com_status_entrega(200.0, 'antes') == 200.0
+
+def test_produto_entregue_com_atraso_nao_recebe_bonus():
+    assert calcular_preco_com_status_entrega(200.0, 'atrasado') == 200.0
 
 def test_recusa_preco_negativo_no_bonus():
     with pytest.raises(ValueError):
-        calcular_preco_com_bonus(-50.0, True)
+        calcular_preco_com_status_entrega(-50.0, 'no_dia')
 
 
 # --- TESTES DA FUNÇÃO DE DESCONTO POR ATRASO (0,5% POR DIA) ---
@@ -38,43 +49,42 @@ def test_recusa_dias_atraso_negativos():
 
 # --- TESTES DO PROCESSADOR DE PEDIDOS (MOCKS) ---
 
-class PedidoFalso:
-    def __init__(self, id_pedido, cliente_email, data_prevista, data_entregue=None):
-        self.id_pedido = id_pedido
-        self.cliente_email = cliente_email
-        self.data_prevista = data_prevista
-        self.data_entregue = data_entregue
-
-def obter_data_atual():
-    return date(2026, 11, 15)
-
 def test_pedido_atrasado_envia_email_de_aviso():
-    pedido_atrasado = PedidoFalso(
+    pedido_atrasado = Pedido(
         id_pedido=1,
-        cliente_email="cliente.com",
+        cliente_email="cliente@email.com",
         data_prevista=date(2026, 11, 10)
     )
-    repositorio = Mock()
+    repositorio = Mock(spec=RepositorioDePedidos)
     repositorio.buscar_pendentes.return_value = [pedido_atrasado]
-    enviador_email = Mock()
-    processador = ProcessadorDePedidos(repositorio, enviador_email, relogio=obter_data_atual)
+    enviador_email = Mock(spec=EnviadorDeEmail)
+    relogio = Mock(spec=RelogioDoSistema)
+    relogio.hoje.return_value = date(2026, 11, 15)
+
+    processador = ProcessadorDePedidos(repositorio, enviador_email, relogio)
     processador.processar_atrasados()
+
+    assert processador.total_notificados == 1
     enviador_email.enviar.assert_called_once_with(
-        "cliente.com",
+        "cliente@email.com",
         "O seu pedido #1 está atrasado!"
     )
-    assert processador.total_notificados == 1
+
 
 def test_pedido_no_prazo_nao_envia_email():
-    pedido_no_prazo = PedidoFalso(
+    pedido_no_prazo = Pedido(
         id_pedido=2,
-        cliente_email="cliente.com",
+        cliente_email="cliente@email.com",
         data_prevista=date(2026, 11, 20)
     )
-    repositorio = Mock()
+    repositorio = Mock(spec=RepositorioDePedidos)
     repositorio.buscar_pendentes.return_value = [pedido_no_prazo]
-    enviador_email = Mock()
-    processador = ProcessadorDePedidos(repositorio, enviador_email, relogio=obter_data_atual)
+    enviador_email = Mock(spec=EnviadorDeEmail)
+    relogio = Mock(spec=RelogioDoSistema)
+    relogio.hoje.return_value = date(2026, 11, 15)
+
+    processador = ProcessadorDePedidos(repositorio, enviador_email, relogio)
     processador.processar_atrasados()
-    enviador_email.enviar.assert_not_called()
+
     assert processador.total_notificados == 0
+    enviador_email.enviar.assert_not_called()
