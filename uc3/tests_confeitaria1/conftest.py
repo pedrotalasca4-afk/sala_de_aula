@@ -13,7 +13,7 @@ from uc3.config_local import SENHA
 BANCO_DE_TESTE = {
     "host": "localhost",
     "port": 5432,
-    "dbname": "confeitaria_teste",  # NUNCA o banco com os dados do projeto
+    "dbname": "confeitaria_teste",
     "user": "atendente_teste",
     "password": SENHA,
 }
@@ -23,13 +23,10 @@ BANCO_DE_TESTE = {
 def conexao():
     conexao = pg.connect(**BANCO_DE_TESTE)
     cursor = conexao.cursor()
-    # Limpa ANTES de cada teste, e não depois: assim cada um começa do zero,
-    # seja o que for que ficou no banco — uma execução parada no meio, um jogo
-    # cadastrado à mão no pgAdmin. TRUNCATE e não rollback, porque as funções
-    # do CRUD dão commit() — e o que já foi gravado, o rollback não desfaz.
-    # CASCADE esvazia junto as tabelas que apontam para jogo e plataforma;
-    # RESTART IDENTITY volta o SERIAL para 1.
-    cursor.execute("TRUNCATE jogo, plataforma RESTART IDENTITY CASCADE")
+    cursor.execute(
+        "TRUNCATE solicitacao, item_pedido, pedido, doce, tipo_doce, "
+        "cliente_telefone, cliente RESTART IDENTITY CASCADE"
+    )
     conexao.commit()
     yield conexao
     conexao.close()
