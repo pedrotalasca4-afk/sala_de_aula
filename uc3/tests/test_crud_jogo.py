@@ -1,5 +1,11 @@
 from decimal import Decimal
-from crud_jogo import (criar_jogo,buscar_jogo,buscar_por_titulo,atualizar_preco,deletar_jogo,)
+from uc3.tests.crud_jogo import (
+    criar_jogo,
+    buscar_jogo,
+    buscar_por_titulo,
+    atualizar_preco,
+    deletar_jogo,
+)
 
 def test_criar_e_buscar_por_id(conexao):
     jogo = criar_jogo(conexao, "Zelda", "Aventura", 2017, Decimal("8.00"))

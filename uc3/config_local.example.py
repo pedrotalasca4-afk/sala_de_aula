@@ -1,1 +1,0 @@
-SENHA = "Insira sua senha"
